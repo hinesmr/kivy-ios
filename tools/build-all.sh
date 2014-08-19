@@ -14,6 +14,8 @@ try $(dirname $0)/build-libjpeg.sh
 try $(dirname $0)/build-pil.sh
 try $(dirname $0)/build-kivy.sh
 try $(dirname $0)/build-pyobjus.sh
+try $(dirname $0)/build-zope.sh
+try $(dirname $0)/build-twisted.sh
 
 echo '== Build done'
 echo "Available libraries in $BUILDROOT/lib"

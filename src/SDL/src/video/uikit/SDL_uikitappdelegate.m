@@ -33,9 +33,11 @@
 #include "../../events/SDL_events_c.h"
 #include "jumphack.h"
 
+/*
 #ifdef main
 #undef main
 #endif
+*/
 
 extern int SDL_main(int argc, char *argv[]);
 static int forward_argc;
@@ -43,12 +45,12 @@ static char **forward_argv;
 static int exit_status;
 static UIWindow *launch_window;
 
+/*
 int main(int argc, char **argv)
 {
     int i;
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 
-    /* store arguments */
     forward_argc = argc;
     forward_argv = (char **)malloc((argc+1) * sizeof(char *));
     for (i = 0; i < argc; i++) {
@@ -57,10 +59,8 @@ int main(int argc, char **argv)
     }
     forward_argv[i] = NULL;
 
-    /* Give over control to run loop, SDLUIKitDelegate will handle most things from here */
     UIApplicationMain(argc, argv, NULL, [SDLUIKitDelegate getAppDelegateClassName]);
 
-    /* free the memory we used to hold copies of argc and argv */
     for (i = 0; i < forward_argc; i++) {
         free(forward_argv[i]);
     }
@@ -69,6 +69,7 @@ int main(int argc, char **argv)
     [pool release];
     return exit_status;
 }
+*/
 
 static void SDL_IdleTimerDisabledChanged(const char *name, const char *oldValue, const char *newValue)
 {
@@ -189,7 +190,7 @@ static void SDL_IdleTimerDisabledChanged(const char *name, const char *oldValue,
 {
     /* run the user's application, passing argc and argv */
     SDL_iPhoneSetEventPump(SDL_TRUE);
-    exit_status = SDL_main(forward_argc, forward_argv);
+    //exit_status = SDL_main(forward_argc, forward_argv);
     SDL_iPhoneSetEventPump(SDL_FALSE);
 
     /* If we showed a splash image, clean it up */
